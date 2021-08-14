@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public float m_AngularSpeed = 180.0f;
 
     private Vector3 m_Movement = Vector3.zero;
+    private Vector3 m_MousePosition = Vector3.zero;
     private Rigidbody m_Body;
 
     private void Awake()
@@ -16,7 +17,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Control();
+        KeyboardControl();
+        MouseControl();
     }
 
     private void FixedUpdate()
@@ -25,11 +27,20 @@ public class Player : MonoBehaviour
         Rotate();
     }
 
-    private void Control()
+    private void KeyboardControl()
     {
         m_Movement.x = Input.GetAxis("Horizontal");
-        m_Movement.y = 0.0f;  
         m_Movement.z = Input.GetAxis("Vertical");
+    }
+
+    private void MouseControl()
+    {
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Camera.main.farClipPlane))
+        {
+            m_MousePosition = hit.point;
+            m_MousePosition.y = transform.position.y;
+        }
     }
 
     private void Move()
@@ -40,21 +51,8 @@ public class Player : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3? position = GetMouseInWorldPosition();
-        if (position == null) return;
-        Vector3 direction = (Vector3)(position - transform.position);
-        direction.y = transform.position.y;
-        m_Body.rotation = Quaternion.LookRotation(direction, Vector3.up);
+        Vector3 direction = m_MousePosition - transform.position;
+        m_Body.rotation = Quaternion.LookRotation(direction);
     }
 
-    private Vector3? GetMouseInWorldPosition()
-    {
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, Camera.main.farClipPlane))
-        {
-            return hit.point;
-        }
-
-        return null;
-    }
 }
