@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -42,18 +40,21 @@ public class Player : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3 position = GetMouseInWorldPosition();
-        Vector3 direction = position - transform.position;
+        Vector3? position = GetMouseInWorldPosition();
+        if (position == null) return;
+        Vector3 direction = (Vector3)(position - transform.position);
+        direction.y = transform.position.y;
         m_Body.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
-    private Vector3 GetMouseInWorldPosition()
+    private Vector3? GetMouseInWorldPosition()
     {
-        float offset = Vector3.Distance(Camera.main.transform.position, transform.position);
-        Vector3 depth = new Vector3(0, 0, offset);
-        Vector3 mousePosition = Input.mousePosition + depth;
-        Vector3 position = Camera.main.ScreenToWorldPoint(mousePosition);
-        position.y = transform.position.y;
-        return position;
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Camera.main.farClipPlane))
+        {
+            return hit.point;
+        }
+
+        return null;
     }
 }
