@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Weapon : MonoBehaviour
 {
     public Transform m_FirePoint;
     public Transform m_Bullet;

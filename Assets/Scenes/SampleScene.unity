@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17474
+  m_Name: pb_Mesh-1278
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -29739,17 +29739,9 @@ MonoBehaviour:
   assetGuid: 
   m_Mesh: {fileID: 1215129659}
   m_IsSelectable: 1
-  m_SelectedFaces: 36000000
-  m_SelectedEdges:
-  - a: 216
-    b: 217
-  - a: 218
-    b: 216
-  - a: 217
-    b: 219
-  - a: 219
-    b: 218
-  m_SelectedVertices: d8000000d9000000da000000db000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &1063066509
 Transform:
   m_ObjectHideFlags: 0
@@ -36595,7 +36587,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17436
+  m_Name: pb_Mesh17442
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -59602,6 +59594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6898d9802cbd7427eb8e2fbddf8829fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MaxEnemies: 1
   m_MinTimeToSpawn: 2
   m_MaxTimeToSpawn: 4
 --- !u!114 &2069365433

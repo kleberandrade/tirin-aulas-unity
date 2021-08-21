@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpawnEnemy))]
 public class GameManager : MonoBehaviour
 {
+    public int m_MaxEnemies = 1;
     public float m_MinTimeToSpawn = 2.0f;
     public float m_MaxTimeToSpawn = 4.0f;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     private void LateUpdate()
     {
         if (Time.time < m_NextTimeToSpawn) return;
+        if (transform.childCount >= m_MaxEnemies) return;
 
         m_Spawner.Spawn();
         UpdateNextTimeToSpawn();

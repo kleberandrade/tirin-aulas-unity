@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d93e9d8d78534d0ca2ab477f2ccbffb, type: 3}
+  m_Name: Seek
+  m_EditorClassIdentifier: 
+  m_Actions:
+  - {fileID: 11400000, guid: b5fed942447b64b12aae33cc2a3e2de2, type: 2}
+  m_Transitions:
+  - m_Decision: {fileID: 11400000, guid: 33a03955ffea541a8948e1d915a707fa, type: 2}
+    m_CurrentState: {fileID: 11400000}
+    m_NextState: {fileID: 11400000, guid: a37f4bcfe357b44328d7805578fd817f, type: 2}
+  m_StateColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
