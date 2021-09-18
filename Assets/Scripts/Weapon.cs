@@ -10,11 +10,13 @@ public class Weapon : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time >= m_NextFireTime)
+        if (Input.GetButtonDown("Fire1") && CanFire)
         {
             Fire();
         }
     }
+
+    public bool CanFire =>  Time.time >= m_NextFireTime;
 
     public void Fire()
     {

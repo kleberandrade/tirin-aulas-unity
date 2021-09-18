@@ -1,0 +1,29 @@
+tree("Root")
+    parallel
+        fallback
+            tree "Flee"
+            tree "Wander"
+            tree "Attack"          
+        tree "Die"
+
+tree "Die"
+    while not IsHealthy
+        Die
+
+tree "Wander"
+    while not IsPlayerNear
+        sequence
+            SetDestination
+            MoveToDestination
+
+tree "Attack"
+    sequence
+        IsPlayerNear
+        LookAtPlayer
+        Fire
+            
+tree "Flee"
+    while IsPlayerNear
+        sequence
+            while IsLowEnergy
+                Flee
